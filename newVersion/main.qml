@@ -4,7 +4,7 @@ import QtQuick.Window 2.2
 Window {
     id:window
     visible: true
-    width: 640
+    width: 800
     height: 860
     color: "black"
     Flickable{
@@ -13,6 +13,7 @@ Window {
         contentWidth: img.width
         contentHeight: img.height
         contentItem.y: (window.height - height) / 2
+        contentItem.x: (window.width - width) / 2
         MouseArea{
             anchors.fill: parent
             onClicked: {
@@ -23,15 +24,16 @@ Window {
 
         Image {
             id: img
-            width: window.width
+//            width: window.width
+            width: Math.min(window.width, refRetio.width)
             height: width / refRetio.retio
-            source: "qrc:/img.png"
+            source: "qrc:/logo.png"
         }
     }
     Image{
         id:refRetio
         property real retio: width / height
         visible: false
-        source: "qrc:/img.png"
+        source: "qrc:/logo.png"
     }
 }
